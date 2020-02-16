@@ -8,10 +8,32 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+.paranoid-logo {
+    background-image: url(./pics/paranoidLogo.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 90px;
+}
 
+.paranoid-image {
+    background-image: url(./pics/paranoidYet.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 1200px;
+    height: 400px;
+}
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
+
+.tag-line {
+    font-family:Impact;
+    font-size:75px;
+    color:black;
+    position:center;
+
+}
 .dl-horizontal dt {
     white-space: normal;
 }
@@ -22,3 +44,4 @@ select,
 textarea {
     max-width: 280px;
 }
+
