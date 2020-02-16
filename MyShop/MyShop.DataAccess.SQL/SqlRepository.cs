@@ -15,36 +15,44 @@ namespace MyShop.DataAccess.SQL
         internal DataContext context;
         internal DbSet<T> dbSet;
 
-
+        public SqlRepository(DataContext context) {
+            this.context = context;
+            this.dbSet = context.Set<T>();
+        }
 
         public IQueryable<T> Collection()
         {
-            throw new NotImplementedException();
+            return dbSet;
         }
 
         public void Commit()
         {
-            throw new NotImplementedException();
+            context.SaveChanges();
         }
 
         public void Delete(string Id)
         {
-            throw new NotImplementedException();
+            var t = Find(Id);
+            if (context.Entry(t).State == EntityState.Detached)
+                dbSet.Attach(t);
+
+            dbSet.Remove(t);
         }
 
         public T Find(string Id)
         {
-            throw new NotImplementedException();
+            return dbSet.Find(Id);
         }
 
         public void Insert(T t)
         {
-            throw new NotImplementedException();
+            dbSet.Add(t);
         }
 
         public void Update(T t)
         {
-            throw new NotImplementedException();
+            dbSet.Attach(t);
+            context.Entry(t).State = EntityState.Modified;
         }
     }
 }
